@@ -26,21 +26,34 @@
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
                 #map_34d0040089b28341bcc80de7a1f31be4 {
+                    flex: 1;
                     position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
+                    z-index: 1;
+                }
+                
+                .folium-map-overlay {
+                    background-color: #f9f9f9;
+                    padding: 5px;
+                    text-align: center;
+                    font-size: medium;
+                    z-index: 2;
+                }
+                
+                .folium-map-overlay p {
+                    color: #434343;
+                    height: 18px;
                 }
                 .leaflet-container { font-size: 1rem; }
             </style>
         
 </head>
-<body>
-    
-    
+
+<body style="display: flex; flex-direction: column; height: 100vh; margin: 0;">
             <div class="folium-map" id="map_34d0040089b28341bcc80de7a1f31be4" ></div>
-        
+            <div class="folium-map-overlay">
+                <p style="color: #333; height: 20px;">Your favourite small towns from <a href="https://www.reddit.com/r/ontario/comments/14ci5my/your_favourite_small_towns/" target="_blank">r/ontario thread</a></p>
+            </div>
+            
 </body>
 <script>
     
@@ -5292,4 +5305,7 @@
             );
         
 </script>
+
+
+
 </html>
