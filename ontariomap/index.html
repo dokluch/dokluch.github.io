@@ -161,10 +161,10 @@
 
 <div class="legend">
   <h4>Mentions in thread</h4>
-  <div class="legend-item" data-tier="1"><span class="legend-dot" style="background:#febd2a; width:8px; height:8px;"></span> 1</div>
-  <div class="legend-item" data-tier="2"><span class="legend-dot" style="background:#f48849; width:10px; height:10px;"></span> 2–4</div>
-  <div class="legend-item" data-tier="3"><span class="legend-dot" style="background:#e25822; width:13px; height:13px;"></span> 5–9</div>
-  <div class="legend-item" data-tier="4"><span class="legend-dot" style="background:#b5367a; width:16px; height:16px;"></span> 10+</div>
+  <div class="legend-item" data-tier="1"><span class="legend-dot" style="background:#febd2a; width:6px; height:6px;"></span> 1</div>
+  <div class="legend-item" data-tier="2"><span class="legend-dot" style="background:#e97158; width:8px; height:8px;"></span> 2–4</div>
+  <div class="legend-item" data-tier="3"><span class="legend-dot" style="background:#a31e9a; width:11px; height:11px;"></span> 5–9</div>
+  <div class="legend-item" data-tier="4"><span class="legend-dot" style="background:#0d0887; width:14px; height:14px;"></span> 10+</div>
 </div>
 
 <div class="header">
@@ -204,12 +204,16 @@
 
   const activeTiers = new Set([1, 2, 3, 4]);
 
-  // ── Color & radius ──
+  // ── Color & radius (original Plasma scale) ──
+  const colorScale = [
+    '#febd2a', '#fba238', '#f48849', '#e97158',
+    '#db5c68', '#cc4778', '#b83289', '#a31e9a',
+    '#8b0aa5', '#6f00a8', '#5302a3', '#350498', '#0d0887'
+  ];
   function style(m) {
-    if (m >= 10) return { color: '#b5367a', radius: 8 };
-    if (m >= 5)  return { color: '#e25822', radius: 6 };
-    if (m >= 2)  return { color: '#f48849', radius: 5 };
-    return { color: '#febd2a', radius: 4 };
+    const i = Math.min(m - 1, colorScale.length - 1);
+    const r = Math.min(1 + m * 0.25, 7);
+    return { color: colorScale[i], radius: r };
   }
 
   function formatPop(n) {
